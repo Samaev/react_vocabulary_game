@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Word } from "../types/Word";
 import randomWords from "random-words";
+import { useAppDispatch } from "../app/hooks";
+import { actions } from "../features/utils";
 
 type Props = {
   words: Word[];
-  onSetWords: (words: Word[]) => void;
 };
 
-export const Vocabulary: React.FC<Props> = ({ words, onSetWords }) => {
+export const Vocabulary: React.FC<Props> = ({ words }) => {
+  const dispatch = useAppDispatch();
   const [word, setWord] = useState("");
   const [translate, setTranslate] = useState("");
-
 
   const handleWord: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     setWord(event.target.value);
@@ -29,7 +30,7 @@ export const Vocabulary: React.FC<Props> = ({ words, onSetWords }) => {
   const handleSubmitForm: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
 
-    onSetWords([
+    dispatch(actions.setWords([
       ...words,
       {
         word,
@@ -41,7 +42,7 @@ export const Vocabulary: React.FC<Props> = ({ words, onSetWords }) => {
         ],
         id: words.length + 1,
       },
-    ]);
+    ]));
     setWord("");
     setTranslate("");
   };
@@ -54,7 +55,7 @@ export const Vocabulary: React.FC<Props> = ({ words, onSetWords }) => {
         <input type="text" value={translate} onChange={handleTranslate} />
         <input type="submit" value="ADD" />
       </form>
-      <button onClick={() => onSetWords([])}>Delete all words</button>
+      <button onClick={() => dispatch(actions.setWords([]))}>Delete all words</button>
       <ol>
         {words.map((word) => (
           <li key={word.id}>{word.word}</li>

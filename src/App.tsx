@@ -1,16 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, Route, Routes } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "./app/hooks";
 import { Results } from "./components/Results";
 import { TestPage } from "./components/TestPage";
 import { Vocabulary } from "./components/Vocabulary";
+import { actions } from "./features/utils";
 import { Word } from "./types/Word";
 
 function App() {
-  const [words, setWords] = useState<Word[]>(() => {
-    const storedWords = localStorage.getItem("words");
-    return storedWords ? JSON.parse(storedWords) : [];
-  });
+
+  const words = useAppSelector(state=>state.words.words)
+  const dispatch = useAppDispatch();
   const [wordsToCheck, setWordsToCheck] = useState<Word[]>([]);
+
+  useEffect(() => {
+    dispatch(actions.setWords(((): Word[] => {
+        const storedWords = localStorage.getItem("words");
+        return storedWords ? JSON.parse(storedWords) : [];
+      })()))
+  }, []);
 
   const handleWordsToCheck = () => {
     const tempArray = [];
@@ -32,7 +40,7 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Vocabulary onSetWords={setWords} words={words} />}
+          element={<Vocabulary words={words} />}
         />
         <Route
           path="/test"

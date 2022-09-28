@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { actions } from "../features/utils";
 import { Result } from "../types/Result";
 import { Word } from "../types/Word";
 
@@ -8,10 +10,20 @@ type Props = {
 
 export const TestPage: React.FC<Props> = ({ wordsToCheck }) => {
   const [score, setScore] = useState(0);
-  const [results, setResults] = useState<Result[]>(() => {
-    const storedResults = localStorage.getItem("results");
-    return storedResults ? JSON.parse(storedResults) : [];
+  const dispatch = useAppDispatch();
+  const results = useAppSelector((state) => state.words.results);
+  useEffect(() => {
+    dispatch(
+      actions.setResults(((): Result[] => {
+        const storedResults = localStorage.getItem("results");
+        return storedResults ? JSON.parse(storedResults) : [];
+      })())
+    );
   });
+  // const [results, setResults] = useState<Result[]>(() => {
+  //   const storedResults = localStorage.getItem("results");
+  //   return storedResults ? JSON.parse(storedResults) : [];
+  // });
   const [sumScore, setSumScore] = useState(() => {
     const storedSumScore = localStorage.getItem("sumScore");
     return storedSumScore ? JSON.parse(storedSumScore) : score;
@@ -40,20 +52,20 @@ export const TestPage: React.FC<Props> = ({ wordsToCheck }) => {
       setCurrentWord(nextWord);
     } else {
       setAttempts(attemts + 1);
-      setResults([
+      dispatch(actions.setResults([
         ...results,
         {
           checkDate: new Date().toLocaleDateString(),
           result: score !== 0 ? score + 10 : 0,
         },
-      ]);
+      ]));
       console.log(results);
       setShowScore(true);
     }
   };
-  
+
   useEffect(() => {
-    setAverage(sumScore / (attemts));
+    setAverage(sumScore / attemts);
   }, [attemts]);
 
   useEffect(() => {
