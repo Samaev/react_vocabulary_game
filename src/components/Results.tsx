@@ -1,9 +1,17 @@
-import { useAppSelector } from "../app/hooks";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { actions } from "../features/utils";
 
 export const Results = () => {
   const { results, score, average, attemts, sumScore } = useAppSelector(
     (state) => state.words
   );
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(actions.setAverage(sumScore / attemts));
+  }, []);
+
   return (
     <div>
       Results

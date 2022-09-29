@@ -1,5 +1,6 @@
 import { Link, Route, Routes } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "./app/hooks";
+import { AddWordPage } from "./components/AddWordPage";
 import { Results } from "./components/Results";
 import { TestPage } from "./components/TestPage";
 import { Vocabulary } from "./components/Vocabulary";
@@ -24,11 +25,13 @@ function App() {
       </Link>
       <Link to="/results">Show Results</Link>
       <Link to="/">Home</Link>
+      <Link to="/addword">Add a word</Link>
 
       <Routes>
         <Route path="/" element={<Vocabulary />} />
         <Route path="/test" element={<TestPage />} />
         <Route path="/results" element={<Results />} />
+        <Route path="/addword" element={<AddWordPage />} />
       </Routes>
     </div>
   );
