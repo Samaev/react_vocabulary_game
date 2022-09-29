@@ -5,6 +5,7 @@ import { Results } from "./components/Results";
 import { TestPage } from "./components/TestPage";
 import { Vocabulary } from "./components/Vocabulary";
 import { actions } from "./features/utils";
+import "./App.css";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -20,12 +21,20 @@ function App() {
 
   return (
     <div className="App">
-      <Link to="/test" onClick={handleWordsToCheck}>
-        Repeat words
-      </Link>
-      <Link to="/results">Show Results</Link>
-      <Link to="/">Home</Link>
-      <Link to="/addword">Add a word</Link>
+      <div className="nav">
+        <Link className="box" to="/">
+          Home
+        </Link>
+        <Link className="box" to="/addword">
+          Add a word
+        </Link>
+        <Link className="box" to="/test" onClick={handleWordsToCheck}>
+          Repeat words
+        </Link>
+        <Link className="box" to="/results">
+          Show Results
+        </Link>
+      </div>
 
       <Routes>
         <Route path="/" element={<Vocabulary />} />

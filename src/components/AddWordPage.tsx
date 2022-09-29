@@ -3,146 +3,148 @@ import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { actions } from "../features/utils";
 import reserve from "./adds/words.json";
 import { Word } from "../types/Word";
+import { nanoid } from "nanoid";
 
 const starter: Word[] = [
   {
-    "word": "Wall",
-    "translate": [
-      { "answer": "Стіна", "isCorrect": true },
-      { "answer": "Замок", "isCorrect": false },
-      { "answer": "Клітка", "isCorrect": false },
-      { "answer": "Береза", "isCorrect": false }
+    word: "Wall",
+    translate: [
+      { answer: "Стіна", isCorrect: true },
+      { answer: "Замок", isCorrect: false },
+      { answer: "Клітка", isCorrect: false },
+      { answer: "Береза", isCorrect: false },
     ],
-    "id": 12
+    id: 12,
   },
   {
-    "word": "Tree",
-    "translate": [
-      { "answer": "Дерево", "isCorrect": true },
-      { "answer": "Каток", "isCorrect": false },
-      { "answer": "Сітка", "isCorrect": false },
-      { "answer": "Фреза", "isCorrect": false }
+    word: "Tree",
+    translate: [
+      { answer: "Дерево", isCorrect: true },
+      { answer: "Каток", isCorrect: false },
+      { answer: "Сітка", isCorrect: false },
+      { answer: "Фреза", isCorrect: false },
     ],
-    "id": 20
+    id: 20,
   },
   {
-    "word": "Oak",
-    "translate": [
-      { "answer": "Дуб", "isCorrect": true },
-      { "answer": "Клас", "isCorrect": false },
-      { "answer": "Біда", "isCorrect": false },
-      { "answer": "Відро", "isCorrect": false }
+    word: "Oak",
+    translate: [
+      { answer: "Дуб", isCorrect: true },
+      { answer: "Клас", isCorrect: false },
+      { answer: "Біда", isCorrect: false },
+      { answer: "Відро", isCorrect: false },
     ],
-    "id": 30
+    id: 30,
   },
   {
-    "word": "Call",
-    "translate": [
-      { "answer": "Дзвінок", "isCorrect": true },
-      { "answer": "Стіл", "isCorrect": false },
-      { "answer": "Стул", "isCorrect": false },
-      { "answer": "Центр", "isCorrect": false }
+    word: "Call",
+    translate: [
+      { answer: "Дзвінок", isCorrect: true },
+      { answer: "Стіл", isCorrect: false },
+      { answer: "Стул", isCorrect: false },
+      { answer: "Центр", isCorrect: false },
     ],
-    "id": 40
+    id: 40,
   },
   {
-    "word": "Ball",
-    "translate": [
-      { "answer": "Мяч", "isCorrect": true },
-      { "answer": "Магазин", "isCorrect": false },
-      { "answer": "Скрипка", "isCorrect": false },
-      { "answer": "Ранок", "isCorrect": false }
+    word: "Ball",
+    translate: [
+      { answer: "Мяч", isCorrect: true },
+      { answer: "Магазин", isCorrect: false },
+      { answer: "Скрипка", isCorrect: false },
+      { answer: "Ранок", isCorrect: false },
     ],
-    "id": 50
+    id: 50,
   },
   {
-    "word": "Mall",
-    "translate": [
-      { "answer": "Супермаркет", "isCorrect": true },
-      { "answer": "Рана", "isCorrect": false },
-      { "answer": "Операція", "isCorrect": false },
-      { "answer": "Танк", "isCorrect": false }
+    word: "Mall",
+    translate: [
+      { answer: "Супермаркет", isCorrect: true },
+      { answer: "Рана", isCorrect: false },
+      { answer: "Операція", isCorrect: false },
+      { answer: "Танк", isCorrect: false },
     ],
-    "id": 56
+    id: 56,
   },
   {
-    "word": "Walk",
-    "translate": [
-      { "answer": "Прогулянка", "isCorrect": true },
-      { "answer": "Ящик", "isCorrect": false },
-      { "answer": "Будка", "isCorrect": false },
-      { "answer": "Береза", "isCorrect": false }
+    word: "Walk",
+    translate: [
+      { answer: "Прогулянка", isCorrect: true },
+      { answer: "Ящик", isCorrect: false },
+      { answer: "Будка", isCorrect: false },
+      { answer: "Береза", isCorrect: false },
     ],
-    "id": 68
+    id: 68,
   },
   {
-    "word": "Air",
-    "translate": [
-      { "answer": "Повітря", "isCorrect": true },
-      { "answer": "Уклін", "isCorrect": false },
-      { "answer": "Верста", "isCorrect": false },
-      { "answer": "Метр", "isCorrect": false }
+    word: "Air",
+    translate: [
+      { answer: "Повітря", isCorrect: true },
+      { answer: "Уклін", isCorrect: false },
+      { answer: "Верста", isCorrect: false },
+      { answer: "Метр", isCorrect: false },
     ],
-    "id": 78
+    id: 78,
   },
   {
-    "word": "Yacht",
-    "translate": [
-      { "answer": "Яхта", "isCorrect": true },
-      { "answer": "Йод", "isCorrect": false },
-      { "answer": "Бак", "isCorrect": false },
-      { "answer": "Берег", "isCorrect": false }
+    word: "Yacht",
+    translate: [
+      { answer: "Яхта", isCorrect: true },
+      { answer: "Йод", isCorrect: false },
+      { answer: "Бак", isCorrect: false },
+      { answer: "Берег", isCorrect: false },
     ],
-    "id": 88
+    id: 88,
   },
   {
-    "word": "Movie",
-    "translate": [
-      { "answer": "Кіно", "isCorrect": true },
-      { "answer": "Блеф", "isCorrect": false },
-      { "answer": "Клітка", "isCorrect": false },
-      { "answer": "Береза", "isCorrect": false }
+    word: "Movie",
+    translate: [
+      { answer: "Кіно", isCorrect: true },
+      { answer: "Блеф", isCorrect: false },
+      { answer: "Клітка", isCorrect: false },
+      { answer: "Береза", isCorrect: false },
     ],
-    "id": 98
+    id: 98,
   },
   {
-    "word": "Colaborate",
-    "translate": [
-      { "answer": "Співпрацювати", "isCorrect": true },
-      { "answer": "Вакансія", "isCorrect": false },
-      { "answer": "Клітка", "isCorrect": false },
-      { "answer": "Береза", "isCorrect": false }
+    word: "Colaborate",
+    translate: [
+      { answer: "Співпрацювати", isCorrect: true },
+      { answer: "Вакансія", isCorrect: false },
+      { answer: "Клітка", isCorrect: false },
+      { answer: "Береза", isCorrect: false },
     ],
-    "id": 107
+    id: 107,
   },
   {
-    "word": "War",
-    "translate": [
-      { "answer": "Війна", "isCorrect": true },
-      { "answer": "Акація", "isCorrect": false },
-      { "answer": "Коло", "isCorrect": false },
-      { "answer": "Берешінь", "isCorrect": false }
+    word: "War",
+    translate: [
+      { answer: "Війна", isCorrect: true },
+      { answer: "Акація", isCorrect: false },
+      { answer: "Коло", isCorrect: false },
+      { answer: "Берешінь", isCorrect: false },
     ],
-    "id": 117
+    id: 117,
   },
   {
-    "word": "Fight",
-    "translate": [
-      { "answer": "Боротьба", "isCorrect": true },
-      { "answer": "Кобзар", "isCorrect": false },
-      { "answer": "Клітка", "isCorrect": false },
-      { "answer": "Береза", "isCorrect": false }
+    word: "Fight",
+    translate: [
+      { answer: "Боротьба", isCorrect: true },
+      { answer: "Кобзар", isCorrect: false },
+      { answer: "Клітка", isCorrect: false },
+      { answer: "Береза", isCorrect: false },
     ],
-    "id": 127
-  }
-]
-
+    id: 127,
+  },
+];
 
 export const AddWordPage = () => {
   const dispatch = useAppDispatch();
   const { words } = useAppSelector((state) => state.words);
   const [added, setAdded] = useState(false);
   const [word, setWord] = useState("");
+  const [wordError, setWordError] = useState(false);
+  const [translateError, setTranslateError] = useState(false);
   const [label, setLabel] = useState("");
   const [translate, setTranslate] = useState("");
 
@@ -150,6 +152,7 @@ export const AddWordPage = () => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
   const handleWord: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+    setWordError(false);
     setWord(event.target.value);
   };
 
@@ -157,6 +160,7 @@ export const AddWordPage = () => {
     event
   ) => {
     setAdded(false);
+    setTranslateError(false);
     setTranslate(event.target.value);
   };
 
@@ -166,6 +170,16 @@ export const AddWordPage = () => {
 
   const handleSubmitForm: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
+    if (word.trim().length === 0) {
+      setWordError(true);
+      return;
+    }
+
+    if (translate.trim().length === 0) {
+      setTranslateError(true);
+      return;
+    }
+
     dispatch(
       actions.setWords([
         ...words,
@@ -192,7 +206,7 @@ export const AddWordPage = () => {
               isCorrect: false,
             },
           ],
-          id: words.length + 1,
+          id: nanoid(),
         },
       ])
     );
@@ -203,15 +217,38 @@ export const AddWordPage = () => {
   };
 
   return (
-    <div>
-      AddWordPage
-      <form className="App-header" onSubmit={handleSubmitForm}>
-        <input type="text" value={word} onChange={handleWord} />
-        <input type="text" value={translate} onChange={handleTranslate} />
-        <input type="submit" value="ADD" />
+    <div className="box">
+      <form className="field" onSubmit={handleSubmitForm}>
+        <label className="label">Enter English word</label>
+        <div className="control">
+          <input
+            className="input"
+            type="text"
+            value={word}
+            onChange={handleWord}
+          />
+          {wordError && <p className="notification is-danger">Enter a word!</p>}
+        </div>
+        <label className="label">Enter correct Ukrainian translation</label>
+        <div className="contr">
+          <input
+            className="input"
+            type="text"
+            value={translate}
+            onChange={handleTranslate}
+          />
+          {translateError && (
+            <p className="notification is-danger">Enter a translation!</p>
+          )}
+        </div>
+        <input type="submit" className="button" value="ADD" />
       </form>
-      {added && <h3>{label} successfully added!</h3>}
-      <button onClick={handleStarter}>You can add starter pack!</button>
+      <div className="notification">
+        {added && <h3 className="title">{label} successfully added!</h3>}
+      </div>
+      <button className="button is-success is-outlined" onClick={handleStarter}>
+        You can add starter pack!
+      </button>
     </div>
   );
 };

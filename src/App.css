@@ -1,7 +1,22 @@
 .App {
   text-align: center;
+  margin: 20px auto;
+}
+.nav {
+  display: flex;
+  justify-content: space-around;
+}
+.box {
+  height: 100%;
+  
+}
+.margin {
+  line-height: 25px;
 }
 
+.button {
+  margin-left: 25px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -22,6 +37,9 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+.table {
+  width: auto;
 }
 
 .App-link {

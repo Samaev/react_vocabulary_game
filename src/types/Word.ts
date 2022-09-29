@@ -6,5 +6,5 @@ export type Word = {
     { answer: string; isCorrect: boolean },
     { answer: string; isCorrect: boolean }
   ];
-  id: number;
+  id: string | number;
 };

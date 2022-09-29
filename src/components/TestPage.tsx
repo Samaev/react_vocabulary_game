@@ -32,7 +32,7 @@ export const TestPage: React.FC = () => {
           ...results,
           {
             checkDate: new Date().toLocaleDateString(),
-            result: score,
+            result: score ? score + 10 : 0,
           },
         ])
       );
@@ -42,22 +42,25 @@ export const TestPage: React.FC = () => {
 
   return (
     <div>
-      TestPage
-      <div>
+      <h3 className="title">TestPage</h3>
+      <div className="notification">
         <h2>This your {attemts + 1} attempt</h2>
         <h2>Your average score is {average} </h2>
         <h3>Translate word {currentWord + 1} / 10</h3>
-        <p>{wordsToCheck[currentWord].word} on English means :</p>
-        {wordsToCheck[currentWord].translate
-          .sort((a, b) => a.answer.localeCompare(b.answer))
-          .map((variant) => (
-            <button
-              onClick={() => handleOptionClick(variant.isCorrect)}
-              key={variant.answer}
-            >
-              {variant.answer.toUpperCase()}
-            </button>
-          ))}
+        <div className="notification is-info">
+          <p><span className="is-primary is-medium title margin">{wordsToCheck[currentWord].word}</span> on English means :</p>{" "}
+          {wordsToCheck[currentWord].translate
+            .sort((a, b) => a.answer.localeCompare(b.answer))
+            .map((variant) => (
+              <button
+                className="button is-warning"
+                onClick={() => handleOptionClick(variant.isCorrect)}
+                key={variant.answer}
+              >
+                {variant.answer.toUpperCase()}
+              </button>
+            ))}
+        </div>
       </div>
     </div>
   );
