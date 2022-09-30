@@ -28,9 +28,9 @@ function App() {
         <Link className="box" to="/addword">
           Add a word
         </Link>
-        <Link className="box" to="/test" onClick={handleWordsToCheck}>
+        {words.length ? <Link className="box" to="/test" onClick={handleWordsToCheck}>
           Repeat words
-        </Link>
+        </Link> : null}
         <Link className="box" to="/results">
           Show Results
         </Link>
