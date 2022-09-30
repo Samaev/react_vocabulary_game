@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/react_vocabulary_game/static/css/main.0b810af2.css",
-    "main.js": "/react_vocabulary_game/static/js/main.60aa615b.js",
+    "main.js": "/react_vocabulary_game/static/js/main.c08434f4.js",
     "index.html": "/react_vocabulary_game/index.html",
     "main.0b810af2.css.map": "/react_vocabulary_game/static/css/main.0b810af2.css.map",
-    "main.60aa615b.js.map": "/react_vocabulary_game/static/js/main.60aa615b.js.map"
+    "main.c08434f4.js.map": "/react_vocabulary_game/static/js/main.c08434f4.js.map"
   },
   "entrypoints": [
     "static/css/main.0b810af2.css",
-    "static/js/main.60aa615b.js"
+    "static/js/main.c08434f4.js"
   ]
 }
