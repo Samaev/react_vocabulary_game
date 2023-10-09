@@ -222,7 +222,7 @@ export const AddWordPage = () => {
         <label className="label">Enter English word</label>
         <div className="control">
           <input
-            className="input"
+            className="input has-text-centered"
             type="text"
             value={word}
             onChange={handleWord}
@@ -232,7 +232,7 @@ export const AddWordPage = () => {
         <label className="label">Enter correct Ukrainian translation</label>
         <div className="contr">
           <input
-            className="input"
+            className="input has-text-centered"
             type="text"
             value={translate}
             onChange={handleTranslate}
